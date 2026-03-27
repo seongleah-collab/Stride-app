@@ -216,7 +216,7 @@ export default function ProfilePage() {
 
                   {/* Level badge */}
                   <div className="flex items-center gap-2 mt-3">
-                    <span className="text-xs font-bold text-white px-3 py-1 rounded-full" style={gradientBg}>
+                    <span className="text-xs font-bold text-white bg-violet-600 px-3 py-1 rounded-full">
                       {levelLabels[level]?.emoji} {levelLabels[level]?.label}
                     </span>
                   </div>
@@ -241,9 +241,8 @@ export default function ProfilePage() {
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all capitalize ${
-                    activeTab === tab ? "text-white shadow-md" : "text-slate-500 hover:text-slate-700"
+                    activeTab === tab ? "bg-violet-600 text-white shadow-sm" : "text-slate-500 hover:text-slate-700"
                   }`}
-                  style={activeTab === tab ? gradientBg : {}}
                 >
                   {tab === "overview" ? "Overview" : tab === "goals" ? "Goals" : "Settings"}
                 </button>
@@ -259,13 +258,13 @@ export default function ProfilePage() {
                   <h3 className="font-bold text-slate-800 text-sm mb-4">This Month</h3>
                   <div className="grid grid-cols-3 gap-3">
                     {[
-                      { emoji: "🏋️", value: "18", label: "Workouts"     },
-                      { emoji: "⏱",  value: "14h", label: "Active time" },
-                      { emoji: "🔥",  value: "6,240", label: "kcal burned" },
+                      { emoji: "🏋️", value: "18",    label: "Workouts",    bg: "bg-violet-50",  text: "text-violet-700"  },
+                      { emoji: "⏱",  value: "14h",   label: "Active time", bg: "bg-emerald-50", text: "text-emerald-700" },
+                      { emoji: "🔥",  value: "6,240", label: "kcal burned", bg: "bg-orange-50",  text: "text-orange-700"  },
                     ].map((s) => (
-                      <div key={s.label} className="flex flex-col items-center gap-1 bg-slate-50 rounded-2xl py-3">
+                      <div key={s.label} className={`flex flex-col items-center gap-1 ${s.bg} rounded-2xl py-3`}>
                         <span className="text-xl">{s.emoji}</span>
-                        <span className="text-base font-black text-slate-800">{s.value}</span>
+                        <span className={`text-base font-black ${s.text}`}>{s.value}</span>
                         <span className="text-[10px] text-slate-400 text-center">{s.label}</span>
                       </div>
                     ))}
@@ -373,7 +372,7 @@ export default function ProfilePage() {
                       const g = allGoals.find((x) => x.id === id);
                       if (!g) return null;
                       return (
-                        <div key={id} className="flex items-center gap-3 px-4 py-3 rounded-2xl text-white" style={gradientBg}>
+                        <div key={id} className="flex items-center gap-3 px-4 py-3 rounded-2xl text-white bg-violet-600">
                           <span className="text-xl">{g.emoji}</span>
                           <div>
                             <p className="font-bold text-sm">{g.label}</p>
@@ -398,9 +397,8 @@ export default function ProfilePage() {
                           localStorage.setItem("stride_schedule", JSON.stringify({ ...s, level: id }));
                         }}
                         className={`flex items-center gap-3 px-4 py-3 rounded-2xl border-2 text-left transition-all ${
-                          level === id ? "border-transparent text-white" : "border-slate-200"
+                          level === id ? "border-transparent text-white bg-violet-600" : "border-slate-200"
                         }`}
-                        style={level === id ? gradientBg : {}}
                       >
                         <span className="text-xl">{emoji}</span>
                         <span className={`font-semibold text-sm ${level === id ? "text-white" : "text-slate-700"}`}>{label}</span>
@@ -437,8 +435,7 @@ export default function ProfilePage() {
                         </div>
                         <button
                           onClick={() => toggleSetting(key)}
-                          className={`w-11 h-6 rounded-full transition-all flex-shrink-0 relative ${settings[key] ? "" : "bg-slate-200"}`}
-                          style={settings[key] ? gradientBg : {}}
+                          className={`w-11 h-6 rounded-full transition-all flex-shrink-0 relative ${settings[key] ? "bg-violet-600" : "bg-slate-200"}`}
                         >
                           <span className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-all ${settings[key] ? "left-5" : "left-0.5"}`} />
                         </button>
@@ -463,8 +460,7 @@ export default function ProfilePage() {
                         </div>
                         <button
                           onClick={() => toggleSetting(key)}
-                          className={`w-11 h-6 rounded-full transition-all flex-shrink-0 relative ${settings[key] ? "" : "bg-slate-200"}`}
-                          style={settings[key] ? gradientBg : {}}
+                          className={`w-11 h-6 rounded-full transition-all flex-shrink-0 relative ${settings[key] ? "bg-violet-600" : "bg-slate-200"}`}
                         >
                           <span className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-all ${settings[key] ? "left-5" : "left-0.5"}`} />
                         </button>
@@ -485,9 +481,8 @@ export default function ProfilePage() {
                           key={u}
                           onClick={() => setSettings((s) => ({ ...s, units: u }))}
                           className={`flex-1 py-2.5 rounded-xl text-sm font-semibold border-2 transition-all capitalize ${
-                            settings.units === u ? "border-transparent text-white" : "border-slate-200 text-slate-600"
+                            settings.units === u ? "border-transparent text-white bg-violet-600" : "border-slate-200 text-slate-600"
                           }`}
-                          style={settings.units === u ? gradientBg : {}}
                         >
                           {u === "metric" ? "Metric (kg, km)" : "Imperial (lb, mi)"}
                         </button>
@@ -503,9 +498,8 @@ export default function ProfilePage() {
                           key={t}
                           onClick={() => setSettings((s) => ({ ...s, theme: t }))}
                           className={`flex-1 py-2.5 rounded-xl text-sm font-semibold border-2 transition-all capitalize ${
-                            settings.theme === t ? "border-transparent text-white" : "border-slate-200 text-slate-600"
+                            settings.theme === t ? "border-transparent text-white bg-violet-600" : "border-slate-200 text-slate-600"
                           }`}
-                          style={settings.theme === t ? gradientBg : {}}
                         >
                           {t === "light" ? "Light" : t === "dark" ? "Dark" : "System"}
                         </button>
@@ -630,7 +624,7 @@ export default function ProfilePage() {
                 <input type="text" value={draftLocation} onChange={(e) => setDraftLocation(e.target.value)} placeholder="City, State" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-200" />
               </div>
             </div>
-            <button onClick={saveProfile} className="w-full mt-5 font-bold text-base py-3.5 rounded-2xl text-white" style={gradientBg}>
+            <button onClick={saveProfile} className="w-full mt-5 font-bold text-base py-3.5 rounded-2xl text-white bg-violet-600 hover:bg-violet-700 transition-colors">
               Save Changes
             </button>
           </div>
@@ -686,7 +680,7 @@ export default function ProfilePage() {
               ))}
             </div>
 
-            <button onClick={() => setShowAvatarPicker(false)} className="w-full mt-5 font-bold text-base py-3 rounded-2xl text-white" style={gradientBg}>
+            <button onClick={() => setShowAvatarPicker(false)} className="w-full mt-5 font-bold text-base py-3 rounded-2xl text-white bg-violet-600 hover:bg-violet-700 transition-colors">
               Done
             </button>
           </div>
@@ -712,8 +706,7 @@ export default function ProfilePage() {
                   <button
                     key={g.id}
                     onClick={() => setDraftGoals((s) => on ? s.filter((x) => x !== g.id) : [...s, g.id])}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-2xl border-2 text-left transition-all ${on ? "border-transparent" : "border-slate-200"}`}
-                    style={on ? gradientBg : {}}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-2xl border-2 text-left transition-all ${on ? "border-transparent bg-violet-600" : "border-slate-200"}`}
                   >
                     <span className="text-xl w-7 flex-shrink-0">{g.emoji}</span>
                     <div className="flex-1 min-w-0">
@@ -734,8 +727,7 @@ export default function ProfilePage() {
             <button
               disabled={draftGoals.length === 0}
               onClick={saveGoals}
-              className={`w-full font-bold text-base py-3.5 rounded-2xl text-white transition-opacity ${draftGoals.length === 0 ? "opacity-40" : ""}`}
-              style={gradientBg}
+              className={`w-full font-bold text-base py-3.5 rounded-2xl text-white bg-violet-600 hover:bg-violet-700 transition-all ${draftGoals.length === 0 ? "opacity-40" : ""}`}
             >
               Save · {draftGoals.length} selected
             </button>
@@ -762,8 +754,7 @@ export default function ProfilePage() {
                   <button
                     key={a.id}
                     onClick={() => setDraftActivities((s) => on ? s.filter((x) => x !== a.id) : [...s, a.id])}
-                    className={`flex flex-col items-center gap-2 py-4 px-2 rounded-2xl border-2 transition-all ${on ? "border-transparent" : "border-slate-200"}`}
-                    style={on ? gradientBg : {}}
+                    className={`flex flex-col items-center gap-2 py-4 px-2 rounded-2xl border-2 transition-all ${on ? "border-transparent bg-violet-600" : "border-slate-200"}`}
                   >
                     <span className="text-2xl">{a.emoji}</span>
                     <span className={`text-xs font-medium text-center leading-tight ${on ? "text-white" : "text-slate-600"}`}>{a.label}</span>
@@ -774,8 +765,7 @@ export default function ProfilePage() {
             <button
               disabled={draftActivities.length === 0}
               onClick={saveActivities}
-              className={`w-full font-bold text-base py-3.5 rounded-2xl text-white transition-opacity ${draftActivities.length === 0 ? "opacity-40" : ""}`}
-              style={gradientBg}
+              className={`w-full font-bold text-base py-3.5 rounded-2xl text-white bg-violet-600 hover:bg-violet-700 transition-all ${draftActivities.length === 0 ? "opacity-40" : ""}`}
             >
               Save · {draftActivities.length} selected
             </button>

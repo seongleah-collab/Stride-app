@@ -42,8 +42,7 @@ function WorkoutCard({ w, color }: { w: Workout; color?: string }) {
         ))}
       </div>
       <button
-        className="mt-auto w-full text-white text-xs font-bold py-2 rounded-xl"
-        style={gradientBg}
+        className="mt-auto w-full text-white text-xs font-bold py-2 rounded-xl bg-violet-600 hover:bg-violet-700 transition-colors"
       >
         Start
       </button>
@@ -149,8 +148,7 @@ export default function WorkoutsPage() {
                 </p>
               </div>
               <button
-                className="flex items-center gap-2 text-white text-sm font-bold px-4 py-2.5 rounded-2xl shadow-md"
-                style={gradientBg}
+                className="flex items-center gap-2 text-white text-sm font-bold px-4 py-2.5 rounded-xl shadow-sm bg-violet-600 hover:bg-violet-700 transition-colors"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                   <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
@@ -182,7 +180,8 @@ export default function WorkoutsPage() {
                   return (
                     <span
                       key={actId}
-                      className="flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-600 shadow-sm"
+                      className="flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold shadow-sm"
+                      style={{ background: `${m.color}12`, borderWidth: 1, borderStyle: "solid", borderColor: `${m.color}40`, color: m.color }}
                     >
                       <span>{m.emoji}</span>
                       {m.label}
@@ -274,7 +273,7 @@ export default function WorkoutsPage() {
                     <p className="text-xs text-slate-400">{recommended[0].duration} · {recommended[0].detail}</p>
                   </div>
                 </div>
-                <button className="w-full text-white text-sm font-bold py-2.5 rounded-xl" style={gradientBg}>
+                <button className="w-full text-white text-sm font-bold py-2.5 rounded-xl bg-violet-600 hover:bg-violet-700 transition-colors">
                   Start workout →
                 </button>
               </div>
@@ -304,9 +303,9 @@ export default function WorkoutsPage() {
                   const g = goalMeta[goalId];
                   if (!g) return null;
                   return (
-                    <div key={goalId} className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-slate-50">
+                    <div key={goalId} className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-violet-50 border border-violet-100">
                       <span className="text-base">{g.emoji}</span>
-                      <span className="text-sm font-medium text-slate-700">{g.label}</span>
+                      <span className="text-sm font-medium text-violet-700">{g.label}</span>
                     </div>
                   );
                 })}

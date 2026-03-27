@@ -52,7 +52,7 @@ export default function Home() {
 
         {/* CTA */}
         <Link href="/sign-in" className="w-full max-w-xs">
-          <button className="w-full bg-slate-900 text-white font-bold text-base py-4 rounded-xl hover:bg-slate-700 active:scale-95 transition-all shadow-sm">
+          <button className="w-full bg-violet-600 text-white font-bold text-base py-4 rounded-xl hover:bg-violet-700 active:scale-95 transition-all shadow-sm">
             Get started — it's free
           </button>
         </Link>
@@ -60,9 +60,14 @@ export default function Home() {
 
         {/* Feature pills */}
         <div className="flex gap-2 mt-10 flex-wrap justify-center">
-          {["Workout tracking", "Social feed", "Challenges", "Stride AI"].map((tag) => (
-            <span key={tag} className="text-xs text-slate-500 border border-stone-200 rounded-full px-3 py-1.5 bg-white shadow-sm">
-              {tag}
+          {[
+            { label: "Workout tracking", color: "text-violet-600 bg-violet-50 border-violet-200" },
+            { label: "Social feed",      color: "text-sky-600 bg-sky-50 border-sky-200"          },
+            { label: "Challenges",       color: "text-orange-600 bg-orange-50 border-orange-200" },
+            { label: "Stride AI",        color: "text-emerald-600 bg-emerald-50 border-emerald-200" },
+          ].map((p) => (
+            <span key={p.label} className={`text-xs font-medium border rounded-full px-3 py-1.5 ${p.color}`}>
+              {p.label}
             </span>
           ))}
         </div>

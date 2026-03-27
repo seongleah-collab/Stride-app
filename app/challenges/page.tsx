@@ -131,8 +131,7 @@ export default function ChallengesPage() {
                 <p className="text-slate-400 text-sm mt-0.5">Compete, push harder, win together</p>
               </div>
               <button
-                className="flex items-center gap-2 text-white text-sm font-bold px-4 py-2.5 rounded-2xl shadow-md"
-                style={gradientBg}
+                className="flex items-center gap-2 text-white text-sm font-bold px-4 py-2.5 rounded-xl shadow-sm bg-violet-600 hover:bg-violet-700 transition-colors"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                   <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
@@ -148,9 +147,8 @@ export default function ChallengesPage() {
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all capitalize ${
-                    activeTab === tab ? "text-white shadow-md" : "text-slate-500 hover:text-slate-700"
+                    activeTab === tab ? "bg-violet-600 text-white shadow-sm" : "text-slate-500 hover:text-slate-700"
                   }`}
-                  style={activeTab === tab ? gradientBg : {}}
                 >
                   {tab === "mine" ? "My Challenges" : tab === "browse" ? "Browse" : "Friends"}
                 </button>
@@ -238,9 +236,8 @@ export default function ChallengesPage() {
                       key={cat}
                       onClick={() => setActiveCategory(cat)}
                       className={`flex-shrink-0 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                        activeCategory === cat ? "text-white shadow-md" : "bg-white text-slate-500 border border-slate-200 hover:border-violet-200"
+                        activeCategory === cat ? "bg-violet-600 text-white shadow-sm" : "bg-white text-slate-500 border border-slate-200 hover:border-violet-200"
                       }`}
-                      style={activeCategory === cat ? gradientBg : {}}
                     >
                       {cat}
                     </button>
@@ -261,7 +258,7 @@ export default function ChallengesPage() {
                           <div className="flex items-center gap-2 mb-0.5 flex-wrap">
                             <p className="font-bold text-slate-800 text-sm">{c.title}</p>
                             {c.trending && (
-                              <span className="text-[10px] font-bold text-white px-2 py-0.5 rounded-full" style={gradientBg}>
+                              <span className="text-[10px] font-bold text-orange-600 bg-orange-50 border border-orange-200 px-2 py-0.5 rounded-full">
                                 🔥 Trending
                               </span>
                             )}
@@ -282,9 +279,8 @@ export default function ChallengesPage() {
                             return next;
                           })}
                           className={`flex-shrink-0 text-xs font-bold px-3 py-2 rounded-xl transition-all ${
-                            joined.has(c.id) ? "bg-slate-100 text-slate-500" : "text-white"
+                            joined.has(c.id) ? "bg-slate-100 text-slate-500" : "bg-violet-600 hover:bg-violet-700 text-white"
                           }`}
-                          style={joined.has(c.id) ? {} : gradientBg}
                         >
                           {joined.has(c.id) ? "Joined ✓" : "Join"}
                         </button>

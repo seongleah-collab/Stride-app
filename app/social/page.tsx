@@ -103,8 +103,7 @@ export default function SocialPage() {
               {activeTab === "clubs" && (
                 <button
                   onClick={() => setShowCreateClub(true)}
-                  className="flex items-center gap-2 text-white text-sm font-bold px-4 py-2.5 rounded-2xl shadow-md"
-                  style={gradientBg}
+                  className="flex items-center gap-2 text-white text-sm font-bold px-4 py-2.5 rounded-xl shadow-sm bg-violet-600 hover:bg-violet-700 transition-colors"
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                     <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
@@ -121,9 +120,8 @@ export default function SocialPage() {
                   key={tab}
                   onClick={() => { setActiveTab(tab); setSearch(""); }}
                   className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all capitalize ${
-                    activeTab === tab ? "text-white shadow-md" : "text-slate-500 hover:text-slate-700"
+                    activeTab === tab ? "bg-violet-600 text-white shadow-sm" : "text-slate-500 hover:text-slate-700"
                   }`}
-                  style={activeTab === tab ? gradientBg : {}}
                 >
                   {tab === "friends" ? "Friends" : "Clubs"}
                 </button>
@@ -152,7 +150,7 @@ export default function SocialPage() {
                   <div className="mb-7">
                     <h2 className="font-bold text-slate-800 mb-3">
                       Friend Requests
-                      <span className="ml-2 text-xs font-bold text-white px-2 py-0.5 rounded-full" style={gradientBg}>
+                      <span className="ml-2 text-xs font-bold text-white bg-violet-600 px-2 py-0.5 rounded-full">
                         {friendRequests.filter((r) => !accepted.has(r.id) && !dismissed.has(r.id)).length}
                       </span>
                     </h2>
@@ -176,8 +174,7 @@ export default function SocialPage() {
                               </button>
                               <button
                                 onClick={() => setAccepted((s) => { const n = new Set(s); n.add(r.id); return n; })}
-                                className="text-xs font-bold px-3 py-2 rounded-xl text-white"
-                                style={gradientBg}
+                                className="text-xs font-bold px-3 py-2 rounded-xl text-white bg-violet-600 hover:bg-violet-700 transition-colors"
                               >
                                 Accept
                               </button>
@@ -248,9 +245,8 @@ export default function SocialPage() {
                           <button
                             onClick={() => toggleFollow(p.id)}
                             className={`text-xs font-bold px-3 py-2 rounded-xl transition-all ${
-                              following.has(p.id) ? "bg-slate-100 text-slate-500" : "text-white"
+                              following.has(p.id) ? "bg-slate-100 text-slate-500" : "bg-violet-600 hover:bg-violet-700 text-white"
                             }`}
-                            style={following.has(p.id) ? {} : gradientBg}
                           >
                             {following.has(p.id) ? "Following ✓" : "Follow"}
                           </button>
@@ -299,9 +295,8 @@ export default function SocialPage() {
                         key={cat}
                         onClick={() => setClubCategory(cat)}
                         className={`flex-shrink-0 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                          clubCategory === cat ? "text-white shadow-md" : "bg-white text-slate-500 border border-slate-200 hover:border-violet-200"
+                          clubCategory === cat ? "bg-violet-600 text-white shadow-sm" : "bg-white text-slate-500 border border-slate-200 hover:border-violet-200"
                         }`}
-                        style={clubCategory === cat ? gradientBg : {}}
                       >
                         {cat}
                       </button>
@@ -336,9 +331,8 @@ export default function SocialPage() {
                           <button
                             onClick={() => toggleClub(c.id)}
                             className={`flex-shrink-0 text-xs font-bold px-3 py-2 rounded-xl transition-all ${
-                              joinedClubs.has(c.id) ? "bg-slate-100 text-slate-500" : "text-white"
+                              joinedClubs.has(c.id) ? "bg-slate-100 text-slate-500" : "bg-violet-600 hover:bg-violet-700 text-white"
                             }`}
-                            style={joinedClubs.has(c.id) ? {} : gradientBg}
                           >
                             {joinedClubs.has(c.id) ? "Joined ✓" : c.private ? "Request" : "Join"}
                           </button>
@@ -424,8 +418,7 @@ export default function SocialPage() {
 
           {/* Create club CTA */}
           <div
-            className="rounded-2xl p-4 text-white cursor-pointer hover:opacity-90 transition-opacity"
-            style={gradientBg}
+            className="rounded-2xl p-4 text-white cursor-pointer hover:opacity-90 transition-opacity bg-violet-600"
             onClick={() => { setActiveTab("clubs"); setShowCreateClub(true); }}
           >
             <p className="text-lg mb-1">🏠</p>
@@ -480,8 +473,7 @@ export default function SocialPage() {
                 </div>
                 <button
                   onClick={() => setClubPrivate((v) => !v)}
-                  className={`w-11 h-6 rounded-full transition-all ${clubPrivate ? "" : "bg-slate-200"}`}
-                  style={clubPrivate ? gradientBg : {}}
+                  className={`w-11 h-6 rounded-full transition-all ${clubPrivate ? "bg-violet-600" : "bg-slate-200"}`}
                 >
                   <span className={`block w-5 h-5 bg-white rounded-full shadow transition-transform mx-0.5 ${clubPrivate ? "translate-x-5" : ""}`} />
                 </button>
@@ -491,8 +483,7 @@ export default function SocialPage() {
             <button
               disabled={!clubName.trim()}
               onClick={() => setShowCreateClub(false)}
-              className={`w-full mt-5 font-bold text-base py-3.5 rounded-2xl text-white transition-opacity ${!clubName.trim() ? "opacity-40" : ""}`}
-              style={gradientBg}
+              className={`w-full mt-5 font-bold text-base py-3.5 rounded-2xl text-white transition-opacity bg-violet-600 hover:bg-violet-700 ${!clubName.trim() ? "opacity-40" : ""}`}
             >
               Create Club
             </button>

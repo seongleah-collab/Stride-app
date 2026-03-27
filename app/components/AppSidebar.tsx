@@ -108,7 +108,7 @@ export default function AppSidebar() {
                 key={item.label}
                 href={item.href}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-                  active ? "bg-violet-50 text-violet-700 font-semibold" : "text-slate-500 hover:bg-stone-50 hover:text-slate-800"
+                  active ? "bg-violet-600 text-white font-semibold shadow-sm" : "text-slate-500 hover:bg-stone-50 hover:text-slate-800"
                 }`}
               >
                 {item.icon}
