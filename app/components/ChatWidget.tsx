@@ -47,10 +47,18 @@ export default function ChatWidget() {
     setMessages((p) => [...p, { role: "assistant", content: "" }]);
 
     try {
+      const schedule  = JSON.parse(localStorage.getItem("stride_schedule") ?? "{}");
+      const ageStr    = localStorage.getItem("stride_age");
       const context = {
+        name:       localStorage.getItem("stride_name")   ?? "",
+        age:        ageStr ? parseInt(ageStr, 10) : null,
+        gender:     localStorage.getItem("stride_gender") ?? "",
         goals:      JSON.parse(localStorage.getItem("stride_goals")      ?? "[]"),
         activities: JSON.parse(localStorage.getItem("stride_activities")  ?? "[]"),
-        level:      JSON.parse(localStorage.getItem("stride_schedule")    ?? "{}").level ?? "beginner",
+        level:      schedule.level    ?? "",
+        days:       schedule.days     ?? null,
+        duration:   schedule.duration ?? "",
+        time:       schedule.time     ?? "",
       };
 
       const res = await fetch("/api/chat", {

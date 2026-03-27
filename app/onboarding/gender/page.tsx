@@ -68,7 +68,10 @@ export default function GenderPage() {
       </div>
 
       <button
-        onClick={() => router.push("/onboarding/goals")}
+        onClick={() => {
+          if (selected) localStorage.setItem("stride_gender", selected);
+          router.push("/onboarding/goals");
+        }}
         disabled={!selected}
         className={`w-full font-bold text-base py-4 rounded-2xl mt-8 text-white transition-opacity ${!selected ? "opacity-40" : ""}`}
         style={{ background: "linear-gradient(90deg, #7c3aed, #f97316)" }}

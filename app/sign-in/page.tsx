@@ -17,7 +17,15 @@ const BackArrow = () => (
 
 export default function SignInPage() {
   const [mode, setMode] = useState<"create" | "signin">("create");
+  const [name, setName]   = useState("");
   const router = useRouter();
+
+  const handleSubmit = () => {
+    if (mode === "create" && name.trim()) {
+      localStorage.setItem("stride_name", name.trim().split(" ")[0]);
+    }
+    router.push("/onboarding/age");
+  };
 
   return (
     <main className="min-h-screen bg-[#f8f7f4] flex flex-col px-6 py-8 max-w-sm mx-auto w-full">
@@ -55,7 +63,13 @@ export default function SignInPage() {
 
       <div className="flex flex-col gap-3 mb-6">
         {mode === "create" && (
-          <input type="text" placeholder="Full name" className="w-full px-4 py-4 rounded-2xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-200 text-sm" />
+          <input
+            type="text"
+            placeholder="Full name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full px-4 py-4 rounded-2xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-200 text-sm"
+          />
         )}
         <input type="email" placeholder="Email address" className="w-full px-4 py-4 rounded-2xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-200 text-sm" />
         <input type="password" placeholder="Password" className="w-full px-4 py-4 rounded-2xl border border-slate-200 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-200 text-sm" />
@@ -86,7 +100,7 @@ export default function SignInPage() {
       </div>
 
       <button
-        onClick={() => router.push("/onboarding/age")}
+        onClick={handleSubmit}
         className="w-full bg-slate-900 text-white font-bold text-base py-4 rounded-xl hover:bg-slate-700 transition-colors"
       >
         {mode === "create" ? "Create account" : "Sign in"}

@@ -80,7 +80,10 @@ export default function AgePage() {
       </div>
 
       <button
-        onClick={() => router.push("/onboarding/gender")}
+        onClick={() => {
+          localStorage.setItem("stride_age", String(age));
+          router.push("/onboarding/gender");
+        }}
         disabled={age < 13}
         className={`w-full text-white font-bold text-base py-4 rounded-2xl mt-auto transition-opacity ${age < 13 ? "opacity-40" : ""}`}
         style={{ background: "linear-gradient(90deg, #7c3aed, #f97316)" }}

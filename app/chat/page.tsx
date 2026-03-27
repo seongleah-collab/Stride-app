@@ -10,9 +10,15 @@ interface Message {
 }
 
 interface UserContext {
+  name: string;
+  age: number | null;
+  gender: string;
   goals: string[];
   activities: string[];
   level: string;
+  days: number | null;
+  duration: string;
+  time: string;
 }
 
 // ── Gradient helpers ──────────────────────────────────────────────────────────
@@ -36,7 +42,7 @@ export default function ChatPage() {
   const [messages, setMessages]     = useState<Message[]>([]);
   const [input, setInput]           = useState("");
   const [loading, setLoading]       = useState(false);
-  const [context, setContext]       = useState<UserContext>({ goals: [], activities: [], level: "beginner" });
+  const [context, setContext]       = useState<UserContext>({ name: "", age: null, gender: "", goals: [], activities: [], level: "", days: null, duration: "", time: "" });
   const bottomRef                   = useRef<HTMLDivElement>(null);
   const inputRef                    = useRef<HTMLTextAreaElement>(null);
 
@@ -44,7 +50,18 @@ export default function ChatPage() {
     const goals      = JSON.parse(localStorage.getItem("stride_goals")      ?? "[]");
     const activities = JSON.parse(localStorage.getItem("stride_activities")  ?? "[]");
     const schedule   = JSON.parse(localStorage.getItem("stride_schedule")    ?? "{}");
-    setContext({ goals, activities, level: schedule.level ?? "beginner" });
+    const ageStr     = localStorage.getItem("stride_age");
+    setContext({
+      name:       localStorage.getItem("stride_name")   ?? "",
+      age:        ageStr ? parseInt(ageStr, 10) : null,
+      gender:     localStorage.getItem("stride_gender") ?? "",
+      goals,
+      activities,
+      level:      schedule.level    ?? "",
+      days:       schedule.days     ?? null,
+      duration:   schedule.duration ?? "",
+      time:       schedule.time     ?? "",
+    });
   }, []);
 
   useEffect(() => {
