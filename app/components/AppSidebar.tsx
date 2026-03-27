@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const navItems = [
   {
@@ -86,6 +87,8 @@ const gradientText: React.CSSProperties = { background: "linear-gradient(90deg, 
 
 export default function AppSidebar() {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
     <>
@@ -102,7 +105,7 @@ export default function AppSidebar() {
 
         <nav className="flex flex-col gap-1 flex-1">
           {navItems.map((item) => {
-            const active = pathname === item.href;
+            const active = mounted && pathname === item.href;
             return (
               <Link
                 key={item.label}
@@ -131,7 +134,7 @@ export default function AppSidebar() {
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 px-2 py-2 z-20">
         <div className="flex items-center justify-around max-w-sm mx-auto">
           {navItems.map((item) => {
-            const active = pathname === item.href;
+            const active = mounted && pathname === item.href;
             return (
               <Link
                 key={item.label}
