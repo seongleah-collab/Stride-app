@@ -507,7 +507,7 @@ export default function ProfilePage() {
                           }`}
                           style={settings.theme === t ? gradientBg : {}}
                         >
-                          {t === "light" ? "☀️ Light" : t === "dark" ? "🌙 Dark" : "⚙️ System"}
+                          {t === "light" ? "Light" : t === "dark" ? "Dark" : "System"}
                         </button>
                       ))}
                     </div>
@@ -519,13 +519,12 @@ export default function ProfilePage() {
                   <h3 className="font-bold text-slate-800 text-sm mb-4">Account</h3>
                   <div className="flex flex-col gap-2">
                     {[
-                      { label: "Change email",    icon: "✉️" },
-                      { label: "Change password", icon: "🔒" },
-                      { label: "Connected apps",  icon: "🔗" },
-                      { label: "Download my data",icon: "📥" },
-                    ].map(({ label, icon }) => (
+                      "Change email",
+                      "Change password",
+                      "Connected apps",
+                      "Download my data",
+                    ].map((label) => (
                       <button key={label} className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-50 transition-colors text-left w-full">
-                        <span className="text-base w-6">{icon}</span>
                         <span className="text-sm font-medium text-slate-700 flex-1">{label}</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-slate-300">
                           <polyline points="9 18 15 12 9 6"/>
@@ -540,11 +539,9 @@ export default function ProfilePage() {
                   <h3 className="font-bold text-red-500 text-sm mb-3">Danger Zone</h3>
                   <div className="flex flex-col gap-2">
                     <button className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-red-50 transition-colors text-left w-full">
-                      <span className="text-base w-6">🚪</span>
                       <span className="text-sm font-medium text-red-500 flex-1">Log out</span>
                     </button>
                     <button className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-red-50 transition-colors text-left w-full">
-                      <span className="text-base w-6">🗑️</span>
                       <span className="text-sm font-medium text-red-400 flex-1">Delete account</span>
                     </button>
                   </div>

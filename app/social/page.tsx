@@ -125,7 +125,7 @@ export default function SocialPage() {
                   }`}
                   style={activeTab === tab ? gradientBg : {}}
                 >
-                  {tab === "friends" ? "👥 Friends" : "🏠 Clubs"}
+                  {tab === "friends" ? "Friends" : "Clubs"}
                 </button>
               ))}
             </div>
