@@ -190,7 +190,7 @@ export default function EventsPage() {
   const spotsLeft = (e: typeof upcomingEvents[0]) => e.capacity - e.attendees - (going.has(e.id) ? 1 : 0);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
+    <div className="min-h-screen bg-[#f8f7f4] flex">
       <AppSidebar />
 
       <div className="flex-1 md:ml-[260px] flex min-h-screen">

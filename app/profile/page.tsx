@@ -153,7 +153,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
+    <div className="min-h-screen bg-[#f8f7f4] flex">
       <AppSidebar />
 
       <div className="flex-1 md:ml-[260px] flex min-h-screen">
@@ -306,7 +306,7 @@ export default function ProfilePage() {
                       { emoji: "💀",  exercise: "Deadlift",    value: "120 kg", change: "+10 kg", date: "Last week"  },
                     ].map((pr) => (
                       <div key={pr.exercise} className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-slate-50 flex items-center justify-center text-lg flex-shrink-0">{pr.emoji}</div>
+                        <div className="w-9 h-9 rounded-xl bg-[#f8f7f4] flex items-center justify-center text-lg flex-shrink-0">{pr.emoji}</div>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-semibold text-slate-700">{pr.exercise}</p>
                           <p className="text-xs text-slate-400">{pr.date}</p>

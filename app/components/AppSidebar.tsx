@@ -74,13 +74,14 @@ const navItems = [
 const gradientBg: React.CSSProperties = { background: "linear-gradient(135deg, #7c3aed, #f97316)" };
 const gradientText: React.CSSProperties = { background: "linear-gradient(90deg, #7c3aed, #f97316)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" };
 
+
 export default function AppSidebar() {
   const pathname = usePathname();
 
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex flex-col fixed top-0 left-0 h-screen w-[260px] bg-white border-r border-slate-100 px-5 py-7 z-20">
+      <aside className="hidden md:flex flex-col fixed top-0 left-0 h-screen w-[260px] bg-white border-r border-stone-100 px-5 py-7 z-20">
         <Link href="/home" className="flex items-center gap-2.5 mb-10 px-2">
           <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={gradientBg}>
             <svg viewBox="0 0 48 48" fill="none" className="w-5 h-5">
@@ -97,10 +98,9 @@ export default function AppSidebar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium transition-all ${
-                  active ? "text-white shadow-md" : "text-slate-500 hover:bg-slate-50 hover:text-slate-700"
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                  active ? "bg-violet-50 text-violet-700 font-semibold" : "text-slate-500 hover:bg-stone-50 hover:text-slate-800"
                 }`}
-                style={active ? gradientBg : {}}
               >
                 {item.icon}
                 {item.label}
@@ -109,7 +109,7 @@ export default function AppSidebar() {
           })}
         </nav>
 
-        <div className="flex items-center gap-3 pt-5 border-t border-slate-100">
+        <div className="flex items-center gap-3 pt-5 border-t border-stone-100">
           <div className="w-10 h-10 rounded-full bg-violet-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">Y</div>
           <div className="min-w-0">
             <p className="text-sm font-semibold text-slate-800 truncate">Your Name</p>

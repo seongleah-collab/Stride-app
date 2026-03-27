@@ -25,7 +25,7 @@ function ProgressBar({ step }: { step: number }) {
         <div
           key={i}
           className="h-1 flex-1 rounded-full"
-          style={i < step ? { background: "linear-gradient(90deg, #7c3aed, #f97316)" } : { background: "#e2e8f0" }}
+          style={i < step ? { background: "#7c3aed" } : { background: "#e2e8f0" }}
         />
       ))}
     </div>
@@ -40,7 +40,7 @@ export default function GoalsPage() {
     setSelected((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
 
   return (
-    <main className="min-h-screen bg-white flex flex-col px-6 py-8 pb-32 max-w-sm mx-auto w-full">
+    <main className="min-h-screen bg-[#f8f7f4] flex flex-col px-6 py-8 pb-32 max-w-sm mx-auto w-full">
       <Link href="/onboarding/gender" className="text-slate-400 hover:text-slate-600 transition-colors mb-6 self-start">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
           <polyline points="15 18 9 12 15 6" />
@@ -60,10 +60,9 @@ export default function GoalsPage() {
             <button
               key={g.id}
               onClick={() => toggle(g.id)}
-              className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl border-2 text-left transition-all active:scale-[0.98] ${
-                on ? "border-transparent" : "border-slate-200"
+              className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border text-left transition-all active:scale-[0.98] bg-white ${
+                on ? "border-violet-600 bg-violet-600" : "border-stone-200 hover:border-stone-300"
               }`}
-              style={on ? { background: "linear-gradient(135deg, #7c3aed, #f97316)" } : {}}
             >
               <span className="text-xl w-7 flex-shrink-0">{g.emoji}</span>
               <div className="flex-1 min-w-0">
@@ -82,15 +81,14 @@ export default function GoalsPage() {
         })}
       </div>
 
-      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-sm px-6 pb-8 pt-4 bg-white/90 backdrop-blur-sm">
+      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-sm px-6 pb-8 pt-4 bg-[#f8f7f4]/90 backdrop-blur-sm">
         <button
           onClick={() => {
             localStorage.setItem("stride_goals", JSON.stringify(selected));
             router.push("/onboarding/activities");
           }}
           disabled={selected.length === 0}
-          className={`w-full font-bold text-base py-4 rounded-2xl text-white transition-opacity ${selected.length === 0 ? "opacity-40" : ""}`}
-          style={{ background: "linear-gradient(90deg, #7c3aed, #f97316)" }}
+          className={`w-full font-bold text-base py-4 rounded-xl text-white transition-opacity bg-slate-900 hover:bg-slate-700 ${selected.length === 0 ? "opacity-40" : ""}`}
         >
           {selected.length > 0 ? `Continue · ${selected.length} selected` : "Select at least one goal"}
         </button>

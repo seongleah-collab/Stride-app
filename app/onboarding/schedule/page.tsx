@@ -34,7 +34,7 @@ function ProgressBar({ step }: { step: number }) {
         <div
           key={i}
           className="h-1 flex-1 rounded-full"
-          style={i < step ? { background: "linear-gradient(90deg, #7c3aed, #f97316)" } : { background: "#e2e8f0" }}
+          style={i < step ? { background: "#7c3aed" } : { background: "#e2e8f0" }}
         />
       ))}
     </div>
@@ -54,10 +54,10 @@ export default function SchedulePage() {
 
   const complete = days && duration && time && level;
 
-  const gradientStyle = { background: "linear-gradient(135deg, #7c3aed, #f97316)" };
+  const activeStyle = { background: "#7c3aed" };
 
   return (
-    <main className="min-h-screen bg-white flex flex-col px-6 py-8 pb-32 max-w-sm mx-auto w-full">
+    <main className="min-h-screen bg-[#f8f7f4] flex flex-col px-6 py-8 pb-32 max-w-sm mx-auto w-full">
       <Link href="/onboarding/activities" className="text-slate-400 hover:text-slate-600 transition-colors mb-6 self-start">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
           <polyline points="15 18 9 12 15 6" />
@@ -78,10 +78,10 @@ export default function SchedulePage() {
             <button
               key={d}
               onClick={() => setDays(d)}
-              className={`flex-1 py-3 rounded-xl text-sm font-bold border-2 transition-all ${
-                days === d ? "border-transparent text-white" : "border-slate-200 text-slate-600"
+              className={`flex-1 py-3 rounded-lg text-sm font-bold border transition-all ${
+                days === d ? "border-transparent text-white" : "border-stone-200 text-slate-600 bg-white"
               }`}
-              style={days === d ? gradientStyle : {}}
+              style={days === d ? activeStyle : {}}
             >
               {d}
             </button>
@@ -97,10 +97,10 @@ export default function SchedulePage() {
             <button
               key={d.id}
               onClick={() => setDuration(d.id)}
-              className={`px-4 py-2.5 rounded-xl text-sm font-medium border-2 transition-all ${
-                duration === d.id ? "border-transparent text-white" : "border-slate-200 text-slate-600"
+              className={`px-4 py-2.5 rounded-lg text-sm font-medium border transition-all ${
+                duration === d.id ? "border-transparent text-white" : "border-stone-200 text-slate-600 bg-white"
               }`}
-              style={duration === d.id ? gradientStyle : {}}
+              style={duration === d.id ? activeStyle : {}}
             >
               {d.label}
             </button>
@@ -116,10 +116,10 @@ export default function SchedulePage() {
             <button
               key={t.id}
               onClick={() => setTime(t.id)}
-              className={`flex flex-col px-3 py-3 rounded-xl border-2 text-left transition-all ${
-                time === t.id ? "border-transparent" : "border-slate-200"
+              className={`flex flex-col px-3 py-3 rounded-lg border text-left transition-all ${
+                time === t.id ? "border-transparent" : "border-stone-200 bg-white"
               }`}
-              style={time === t.id ? gradientStyle : {}}
+              style={time === t.id ? activeStyle : {}}
             >
               <span className={`text-xs font-semibold ${time === t.id ? "text-white" : "text-slate-700"}`}>
                 {t.emoji} {t.label}
@@ -138,10 +138,10 @@ export default function SchedulePage() {
             <button
               key={l.id}
               onClick={() => setLevel(l.id)}
-              className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl border-2 text-left transition-all active:scale-[0.98] ${
-                level === l.id ? "border-transparent" : "border-slate-200"
+              className={`flex items-center gap-3 px-4 py-3.5 rounded-xl border text-left transition-all active:scale-[0.98] ${
+                level === l.id ? "border-transparent" : "border-stone-200 bg-white"
               }`}
-              style={level === l.id ? gradientStyle : {}}
+              style={level === l.id ? activeStyle : {}}
             >
               <span className="text-xl">{l.emoji}</span>
               <div>
@@ -153,15 +153,14 @@ export default function SchedulePage() {
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-sm px-6 pb-8 pt-4 bg-white/90 backdrop-blur-sm">
+      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-sm px-6 pb-8 pt-4 bg-[#f8f7f4]/90 backdrop-blur-sm">
         <button
           onClick={() => {
             localStorage.setItem("stride_schedule", JSON.stringify({ days, duration, time, level }));
             router.push("/dashboard");
           }}
           disabled={!complete}
-          className={`w-full font-bold text-base py-4 rounded-2xl text-white transition-opacity ${!complete ? "opacity-40" : ""}`}
-          style={{ background: "linear-gradient(90deg, #7c3aed, #f97316)" }}
+          className={`w-full font-bold text-base py-4 rounded-xl text-white transition-opacity bg-slate-900 hover:bg-slate-700 ${!complete ? "opacity-40" : ""}`}
         >
           {complete ? "Let's go! 🎉" : "Complete all sections to continue"}
         </button>

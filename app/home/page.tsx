@@ -14,10 +14,10 @@ const gradientBar: React.CSSProperties = { background: "linear-gradient(90deg,  
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-slate-50 flex">
+    <div className="min-h-screen bg-[#f8f7f4] flex">
       <AppSidebar />
 
-      <div className="flex-1 md:ml-[260px] flex min-h-screen">
+      <div className="flex-1 md:ml-[260px] flex min-h-screen bg-[#f8f7f4]">
         <main className="flex-1 pb-24 md:pb-10 min-w-0">
           <div className="max-w-xl mx-auto px-4 md:px-8">
 
@@ -73,7 +73,7 @@ export default function HomePage() {
                     <span key={t} className="text-xs font-medium px-3 py-1 rounded-full bg-slate-100 text-slate-500">{t}</span>
                   ))}
                 </div>
-                <button className="w-full py-3.5 rounded-2xl text-white font-bold text-sm" style={gradientBg}>
+                <button className="w-full py-3.5 rounded-xl text-white font-bold text-sm bg-slate-900 hover:bg-slate-700 transition-colors">
                   Start workout →
                 </button>
               </div>
@@ -106,7 +106,7 @@ export default function HomePage() {
         </main>
 
         {/* Right panel — desktop only, kept minimal */}
-        <aside className="hidden lg:flex flex-col w-[260px] flex-shrink-0 px-6 py-10 gap-8 border-l border-slate-100 sticky top-0 h-screen bg-white">
+        <aside className="hidden lg:flex flex-col w-[260px] flex-shrink-0 px-6 py-10 gap-8 border-l border-stone-100 sticky top-0 h-screen bg-white">
 
           {/* This week */}
           <div>

@@ -114,7 +114,7 @@ export default function ChatPage() {
   const isEmpty = messages.length === 0;
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
+    <div className="min-h-screen bg-[#f8f7f4] flex">
       <AppSidebar />
 
       <div className="flex-1 md:ml-[260px] flex flex-col min-h-screen">

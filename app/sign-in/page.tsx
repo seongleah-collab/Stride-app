@@ -20,7 +20,7 @@ export default function SignInPage() {
   const router = useRouter();
 
   return (
-    <main className="min-h-screen bg-white flex flex-col px-6 py-8 max-w-sm mx-auto w-full">
+    <main className="min-h-screen bg-[#f8f7f4] flex flex-col px-6 py-8 max-w-sm mx-auto w-full">
       <Link href="/" className="text-slate-400 hover:text-slate-600 transition-colors mb-8 self-start">
         <BackArrow />
       </Link>
@@ -87,8 +87,7 @@ export default function SignInPage() {
 
       <button
         onClick={() => router.push("/onboarding/age")}
-        className="w-full text-white font-bold text-base py-4 rounded-2xl"
-        style={{ background: "linear-gradient(90deg, #7c3aed, #f97316)" }}
+        className="w-full bg-slate-900 text-white font-bold text-base py-4 rounded-xl hover:bg-slate-700 transition-colors"
       >
         {mode === "create" ? "Create account" : "Sign in"}
       </button>
