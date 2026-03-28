@@ -115,45 +115,45 @@ export default function HomePage() {
         </main>
 
         {/* Right panel */}
-        <aside className="hidden lg:flex flex-col w-[260px] flex-shrink-0 px-6 py-10 gap-8 border-l border-stone-100 sticky top-0 h-screen bg-white">
+        <aside className="hidden lg:flex flex-col w-[260px] flex-shrink-0 px-6 py-10 gap-8 sticky top-0 h-screen" style={gradientBg}>
 
           {/* This week */}
           <div>
-            <h3 className="font-bold text-slate-900 text-sm mb-4">This week</h3>
+            <h3 className="font-bold text-white text-sm mb-4">This week</h3>
             <div className="flex items-end gap-1.5 h-12">
               {weekDays.map((day, i) => (
                 <div key={i} className="flex flex-col items-center gap-1.5 flex-1">
                   <div
                     className="w-full rounded-md flex-1 min-h-[6px]"
-                    style={weekActivity[i] ? { background: "#7c3aed" } : { background: "#e2e8f0" }}
+                    style={weekActivity[i] ? { background: "rgba(255,255,255,0.9)" } : { background: "rgba(255,255,255,0.2)" }}
                   />
-                  <span className="text-[10px] text-slate-400 font-medium">{day}</span>
+                  <span className="text-[10px] text-white/60 font-medium">{day}</span>
                 </div>
               ))}
             </div>
-            <p className="text-xs text-slate-400 mt-3">4 of 5 days this week</p>
+            <p className="text-xs text-white/60 mt-3">4 of 5 days this week</p>
           </div>
 
           {/* Quick links */}
           <div>
-            <h3 className="font-bold text-slate-900 text-sm mb-3">Explore</h3>
+            <h3 className="font-bold text-white text-sm mb-3">Explore</h3>
             <div className="flex flex-col gap-1">
               {[
-                { label: "My workouts",  href: "/workouts",   color: "text-violet-600 bg-violet-50"  },
-                { label: "Challenges",   href: "/challenges", color: "text-orange-600 bg-orange-50"  },
-                { label: "Events",       href: "/events",     color: "text-sky-600 bg-sky-50"        },
-                { label: "Stride AI",    href: "/chat",       color: "text-emerald-600 bg-emerald-50"},
+                { label: "My workouts", href: "/workouts"   },
+                { label: "Challenges",  href: "/challenges" },
+                { label: "Events",      href: "/events"     },
+                { label: "Stride AI",   href: "/chat"       },
               ].map((l) => (
                 <a
                   key={l.label}
                   href={l.href}
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-stone-50 transition-colors group"
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors group"
                 >
-                  <span className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-black ${l.color}`}>
+                  <span className="w-6 h-6 rounded-lg bg-white/20 flex items-center justify-center text-xs font-black text-white">
                     {l.label[0]}
                   </span>
-                  <span className="text-sm font-medium text-slate-600 group-hover:text-slate-900 transition-colors">{l.label}</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 text-slate-300 ml-auto">
+                  <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">{l.label}</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 text-white/40 ml-auto">
                     <polyline points="9 18 15 12 9 6"/>
                   </svg>
                 </a>
@@ -162,10 +162,10 @@ export default function HomePage() {
           </div>
 
           {/* Streak card */}
-          <div className="rounded-2xl p-4 text-white" style={gradientBg}>
-            <p className="text-2xl font-black mb-0.5">7 days 🔥</p>
-            <p className="text-sm opacity-80">Current streak</p>
-            <p className="text-xs opacity-60 mt-1">Keep it going — you're on a roll!</p>
+          <div className="rounded-2xl p-4 bg-white/15 border border-white/20">
+            <p className="text-2xl font-black text-white mb-0.5">7 days 🔥</p>
+            <p className="text-sm text-white/80">Current streak</p>
+            <p className="text-xs text-white/60 mt-1">Keep it going — you're on a roll!</p>
           </div>
 
         </aside>

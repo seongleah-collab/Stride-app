@@ -93,14 +93,14 @@ export default function AppSidebar() {
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex flex-col fixed top-0 left-0 h-screen w-[260px] bg-white border-r border-stone-100 px-5 py-7 z-20">
+      <aside className="hidden md:flex flex-col fixed top-0 left-0 h-screen w-[260px] px-5 py-7 z-20" style={gradientBg}>
         <Link href="/home" className="flex items-center gap-2.5 mb-10 px-2">
-          <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={gradientBg}>
+          <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
             <svg viewBox="0 0 48 48" fill="none" className="w-5 h-5">
               <path d="M 11 3 L 34 3 L 22 24 L 37 24 L 24 46 L 11 32 L 21 29 Z" fill="white" stroke="white" strokeWidth="4" strokeLinejoin="round" strokeLinecap="round"/>
             </svg>
           </div>
-          <span className="font-black text-xl" style={gradientText}>Stride</span>
+          <span className="font-black text-xl text-white">Stride</span>
         </Link>
 
         <nav className="flex flex-col gap-1 flex-1">
@@ -111,7 +111,7 @@ export default function AppSidebar() {
                 key={item.label}
                 href={item.href}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-                  active ? "bg-violet-600 text-white font-semibold shadow-sm" : "text-slate-500 hover:bg-stone-50 hover:text-slate-800"
+                  active ? "bg-white/25 text-white font-semibold" : "text-white/70 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 {item.icon}
@@ -121,11 +121,11 @@ export default function AppSidebar() {
           })}
         </nav>
 
-        <div className="flex items-center gap-3 pt-5 border-t border-stone-100">
-          <div className="w-10 h-10 rounded-full bg-violet-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">Y</div>
+        <div className="flex items-center gap-3 pt-5 border-t border-white/20">
+          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">Y</div>
           <div className="min-w-0">
-            <p className="text-sm font-semibold text-slate-800 truncate">Your Name</p>
-            <p className="text-xs text-slate-400">View profile</p>
+            <p className="text-sm font-semibold text-white truncate">Your Name</p>
+            <p className="text-xs text-white/60">View profile</p>
           </div>
         </div>
       </aside>
